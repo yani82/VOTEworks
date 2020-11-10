@@ -5,7 +5,7 @@ if ActiveRecord::Migrator.needs_migration?
 end
 
 use Rack::MethodOverride
-### use OtherController1
-### use OtherController2
-### use OtherController3
+use SessionsController # need to 'mount' to run
+use RegistryController
+use UsersController
 run ApplicationController

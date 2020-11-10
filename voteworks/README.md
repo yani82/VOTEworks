@@ -2,10 +2,7 @@
 
 This is a sinatra web application created to help you register to vote, by adding your:
 
-* ID Number
-* Date of Birth 
-* Zipcode
-* Last 4 Digits of SSN 
+* Your Name
 * Email 
 * Password
 
