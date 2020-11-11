@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
     get '/logout' do 
         logout! 
-        redirect '/registry'
+        redirect '/login' # previously, /registry
     end 
 
 end 

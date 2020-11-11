@@ -1,3 +1,7 @@
 class User < ActiveRecord::Base
-    has_secure_password belongs_to :registry
+    has_secure_password 
+
+    validates :email, :presence => true
+    
+    belongs_to :registry
   end

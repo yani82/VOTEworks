@@ -1,3 +1,3 @@
-class Category < ActiveRecord::Base
+class Registry < ActiveRecord::Base
     has_many :users
   end

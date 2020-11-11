@@ -14,10 +14,15 @@ class RegistryController < ApplicationController
     end 
 
     get '/registry/:id/edit' do
-         if !logged_in?
-            redirect '/login'
+        # Checking if user is logged in
+        if !logged_in?
+            redirect "/login"
         else
-            "An edit registration form"
+            if registry = current_user.registry.find_by(params[:id])
+            "An edit registration form #{current_user.id} is editing #{registry.id}" # rendering = when current request has data we need
+        else 
+            redirect '/registry' # redirect = if we don't need data anymore
+        end 
         end 
     end 
 

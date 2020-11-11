@@ -1,7 +1,6 @@
 class UsersController < ApplicationController 
 
     get '/register' do
-
         erb :"users/new.html"
     end 
 
@@ -12,7 +11,7 @@ class UsersController < ApplicationController
         if @user.save
             redirect '/login'
         else 
-            erb :"users/new.html"
+            erb :"users/new.html" # redirect '/register'
         end 
     end 
 
