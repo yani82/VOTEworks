@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 
     post '/sessions' do 
         # raise params.inspect
-        login(params[:email])
+        login(params[:email], params[:password])
         redirect '/registry'
     end 
 
