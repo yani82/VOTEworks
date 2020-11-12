@@ -10,9 +10,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    session[:greeting] = "Hello World"
-    'Hello, World!'
-    # erb :welcome
+    erb :welcome
   end
 
   helpers do # can be used across controllers
@@ -26,8 +24,8 @@ class ApplicationController < Sinatra::Base
     end 
 
     def login(email, password)
-      # Authentification
-      user = User.find_by(:email => email) 
+      # Authentication
+      user = User.find_by(:email => email) # missing params[:]?
         if user && user.authenticate(password)
         session[:email] = user.email
       else 

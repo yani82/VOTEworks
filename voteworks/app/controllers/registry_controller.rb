@@ -1,5 +1,8 @@
 class RegistryController < ApplicationController 
 
+    # differentiates registry based on new election 
+    # user logged in to check their own registeries as well as different public registries with limited info ie how many 'returns how many registeries there are'
+
     get '/registry' do 
         "You are logged in as #{session[:email]}"
     end 
