@@ -14,19 +14,21 @@
 ActiveRecord::Schema.define(version: 20201110061156) do
 
   create_table "registry", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
-    t.string "email"
-    t.string "password"
-    t.string "address"
+    t.string  "user_id"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.string  "address"
+    t.string  "address_line_2"
+    t.string  "city"
+    t.string  "state"
+    t.integer "zipcode"
+    t.string  "country"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "first_name"
-    t.string "last_name"
+    t.string "username"
     t.string "email"
     t.string "password"
-    t.string "address"
     t.string "password_digest"
   end
 

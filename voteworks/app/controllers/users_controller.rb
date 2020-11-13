@@ -4,17 +4,19 @@ class UsersController < ApplicationController
         erb :"users/new.html"
     end 
 
-    post '/users' do 
-        @user = User.new 
-        @user.first_name = params[:first_name]
-        @user.last_name = params[:last_name]
+    get '/users' do
+        erb :"users/index"
+    end
+
+    post '/users' do
+        @user = User.new
+        @user.username = params[:username]
         @user.email = params[:email]
         @user.password = params[:password]
-        @user.address = params[:address]
         if @user.save
-            redirect '/login'
+            erb :"users/index"
         else 
-            erb :"users/new.html" # redirect '/register'
+            erb :"users/new.html"
         end 
     end 
 

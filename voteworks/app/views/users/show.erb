@@ -1,0 +1,19 @@
+<h1>Welcome <%= @registry.first_name %>!</h1>
+
+<h2>You are a registered voter</h2>
+
+    <%= @registry.first_name %><br> 
+    <%= @registry.last_name %><br> 
+    <%= @registry.email %><br> 
+    <%= @registry.address %><br>
+    <%= @registry.address_line_2 %><br>
+    <%= @registry.city %><br>
+    <%= @registry.state %><br>
+    <%= @registry.zipcode %><br>
+    <%= @registry.country %><br> 
+    
+    <a href="/"><button>Edit information</button></a>
+
+    <a href="/"><button>Delete registry</button></a>
+
+</form> 
