@@ -3,6 +3,5 @@ class User < ActiveRecord::Base
 
     validates :email, :presence => true
     
-    # belongs_to :registry
     has_many :registries # (when user votes for a different election, to create new registry ) 
   end
