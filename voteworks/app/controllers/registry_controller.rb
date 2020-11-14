@@ -37,7 +37,7 @@ class RegistryController < ApplicationController
         #     redirect '/login' # Redirecting if they aren't
         # else 
             # @registry = Registry.create(params)
-            redirect_to :'/registry/show'
+            erb :show
         end 
     end
 
