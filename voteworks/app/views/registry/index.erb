@@ -1,10 +1,11 @@
-<% @registeries.each do |registry| %>
-    <%=  registry.first_name %>
-    <%=  registry.last_name %>
-    <%=  registry.address %>
-    <%=  registry.address_line_2 %>
-    <%=  registry.city %>
-    <%=  registry.state %>
-    <%=  registry.zipcode %>
-    <%=  registry.country %>
+<form action="/registries" method="POST">
+<% @registries.each do |registry| %>
+    <%= registry.first_name %>
+    <%= registry.last_name %>
+    <%= registry.address %>
+    <%= registry.address_line_2 %>
+    <%= registry.city %>
+    <%= registry.state %>
+    <%= registry.zipcode %>
+    <%= registry.country %>
     <% end %> 

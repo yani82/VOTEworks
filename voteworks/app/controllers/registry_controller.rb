@@ -5,14 +5,14 @@ class RegistryController < ApplicationController
 
     get '/registries' do # change to plural 
         "You are logged in as #{session[:email]}"
-        erb :"users/index" # create a index view page under registry with edit & delete button 
+        erb :"registry/index" # create a index view page under registry with edit & delete button 
     end 
 
     # shows all registeries 
     get '/registries' do
         "Get all registry records from database"
         @registries = Registry.all
-        erb :"users/index" # show?
+        erb :"users/index" # or show?
     end 
 
     get '/registries/new' do 
@@ -27,18 +27,18 @@ class RegistryController < ApplicationController
     get '/registries/:id' do
         # "Get the id from the params hash and look in the database for a registry with that id and then save it to a @ variable and render an erb"
         @registry = Registry.find(params[:id])
-        erb :"registry/show"
+        redirect "/registry/show" # not users/show? 
     end 
 
     post '/registries' do
-        "testing"
+        # "testing"
         # binding.pry
-        # if !logged_in?
+        if !logged_in?
         #     redirect '/login' # Redirecting if they aren't
         # else 
-        #     @registry = Registry.create(first_name: params[:first_name], last_name: params[:last_name], address: params[:address], address_line_2: params[:address_line_2], city: params[:city], state: params[:state], zipcode: params[:zipcode], country: params[:country])
-        #     redirect "/registry"
-        # end 
+            # @registry = Registry.create(params)
+            redirect_to :'/registry/show'
+        end 
     end
 
     get '/registries/:id/edit' do
