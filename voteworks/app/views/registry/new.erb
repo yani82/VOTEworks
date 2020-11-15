@@ -1,5 +1,5 @@
 <header><img src="/images/welcome.png" style="width:500px;height500px;"></header>
-<h1>Welcome <%= @current_user.username %>!</h1>
+<h1>Welcome!</h1>
 
 <h2>Add your information here:</h2>
 <form action="/registries" method="POST">
@@ -19,7 +19,7 @@
 <label for="zipcode">Zipcode:</label>
 <input type="text" name="zipcode" id="zipcode" /><br>
 <label for="country">Country:</label>
-<input type="country" name="country" id="address" />
+<input type="text" name="country" id="country">
 </p>
 
 <input type="submit" value="Create Registry">

@@ -16,7 +16,8 @@ class ApplicationController < Sinatra::Base
   helpers do # can be used across controllers
 
     def logged_in? 
-      !!current_user # double negation
+      !!session[:email] # double negation
+      # instead of !!current_user
     end 
 
     def current_user

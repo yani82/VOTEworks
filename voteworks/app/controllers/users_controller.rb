@@ -1,6 +1,6 @@
 class UsersController < ApplicationController 
 
-    get '/register' do
+    get '/signup' do
         erb :"users/new.html"
     end 
 
@@ -9,14 +9,12 @@ class UsersController < ApplicationController
     end
 
     post '/users' do
-        @user = User.new
-        @user.username = params[:username]
-        @user.email = params[:email]
-        @user.password = params[:password]
-        if @user.save
-            erb :"users/index"
-        else 
-            erb :"users/new.html"
+        user = User.new(params)
+        if user.save 
+            session[:user_id] = user.id 
+            redirect '/registries/new'
+        else
+            redirect '/signup'
         end 
     end 
 
