@@ -1,9 +1,8 @@
-<h1>Welcome!</h1>
+<h1>Welcome <%= @registry.first_name %>!</h1>
 
 <h2>Congratulations! You are a registered voter:</h2>
 
-    <%= @registry.first_name %><br> 
-    <%= @registry.last_name %><br> 
+    <%= @registry.first_name %> <%= @registry.last_name %><br> 
     <%= @registry.address %><br>
     <%= @registry.address_line_2 %><br>
     <%= @registry.city %><br>

@@ -16,12 +16,12 @@ class ApplicationController < Sinatra::Base
   helpers do # can be used across controllers
 
     def logged_in? 
-      !!session[:email] # double negation
+      !!session[:user_id] # double negation
       # instead of !!current_user
     end 
 
     def current_user
-      @current_user = User.find_by(:email => session[:email]) if session[:email]
+      @current_user = User.find(session[:user_id])
     end 
 
     def login(email, password)
