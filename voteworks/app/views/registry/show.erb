@@ -11,8 +11,10 @@
     <%= @registry.zipcode %><br>
     <%= @registry.country %><br> 
     
-    <a href="/registries"><button>Edit information</button></a>
+    <a href="/registries/<%=@registry.id%>/edit"><button>Edit information</button></a><br><br>
 
-    <a href="/registries"><button>Delete registry</button></a>
+    <form action="/registries/<%=@registry.id%>/delete" method="post">
+    <input id="hidden" type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete"> 
 
 </form> 

@@ -6,6 +6,7 @@ class RegistryController < ApplicationController
     get '/registries' do 
         # "You are logged in as #{session[:email]}"
         # binding.pry
+        @registries = current_user.registries 
         erb :"registry/index"  
     end 
 
@@ -39,35 +40,33 @@ class RegistryController < ApplicationController
     #     if User.all.map{|u| u.username}.include?(params[:username])
     #     redirect :'/registry/show'
     # end
-        registry = Registry.new(params)
-        if registry.save
-        # user = User.create(params[:first_name], params[:last_name], params[:address], params[:address_line_2], params[:city], params[:state], params[:zipcode], params[:country])
-        # session[:user_id] = user.id
-        # redirect "/users/#{user.slug}"
+        registry = current_user.registries.create(params) # create saves it, new doesn't, helpder method: current_user is the instance of that user class and is calling on all the registries
+        # binding.pry
         redirect "registries/#{registry.id}"
-        else 
-            redirect 'registries/new'
+        # else 
+            # redirect 'registries/new'
         end
-    end
     end
 
     get '/registries/:id/edit' do
         # Checking if user is logged in
-        @registries = Registry.find_by(params[:id]) 
+        @registry = Registry.find(params[:id]) 
         if !logged_in?
             redirect '/login'
-        else
-            if @registries 
-            "An edit registration form #{current_user.id} is editing #{registry.id}" # rendering = when current request has data we need
+        elsif @registry 
+            # "An edit registration form #{current_user.id} is editing #{registry.id}" # rendering = when current request has data we need
+            erb :"/registry/edit"
         else 
-            redirect "/registry" # redirect = if we don't need data anymore
-        end 
+            redirect "/registries" # redirect = if we don't need data anymore
         end 
     end 
 
     patch '/registries/:id' do
-        Registry.find(params).save
-        redirect '/users'
+        params.delete("_method")
+        @registry = Registry.find(params[:id])
+        @registry.update(params)
+        binding.pry
+        redirect "/registries"
     end
     
       delete '/registries/:id/delete' do

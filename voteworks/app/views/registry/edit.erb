@@ -1,22 +1,12 @@
-<% require 'pry' %>
-<%= @registry.first_name %>
-<%= @registry.last_name %>
-<%= @registry.address %>
-<%= @registry.address_line_2 %>
-<%= @registry.city %>
-<%= @registry.state %>
-<%= @registry.zipcode %>
-<%= @registry.country %>
-
-<form action="/registries<%=@registry.id%>" method="post">
-  <input id="hidden" type="hidden" name="_method" value="patch">
-  <input type="text" name="first_name">
-  <input type="text" name="last_name">
-  <input type="text" name="address">
-  <input type="text" name="address_line_2">
-  <input type="text" name="city">
-  <input type="text" name="state">
-  <input type="text" name="zipcode">
-  <input type="text" name="country">
+<form action="/registries/<%=@registry.id%>" method="post">
+  <input id="hidden" type="hidden" name="_method" value="PATCH">
+  <%= @registry.first_name %> <input type="text" name="first_name"><br><br>
+  <%= @registry.last_name %> <input type="text" name="last_name"><br><br>
+  <%= @registry.address %> <input type="text" name="address"><br><br>
+  <%= @registry.address_line_2 %> <input type="text" name="address_line_2"><br><br>
+  <%= @registry.city %> <input type="text" name="city"><br><br>
+  <%= @registry.state %> <input type="text" name="state"><br><br>
+  <%= @registry.zipcode %> <input type="text" name="zipcode"><br><br>
+  <%= @registry.country %> <input type="text" name="country"><br><br>
   <input type="submit" id="submit">
 </form>

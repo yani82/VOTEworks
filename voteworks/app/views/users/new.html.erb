@@ -3,7 +3,7 @@
 
 <%= "Must include email and password" if @user && @user.errors.any? %>
 
-<form action="/users" method="POST">
+<form action="/signup" method="POST">
     <p>
     <label for="username">User Name:</label> 
     <input type="text" name="username" id="username" />

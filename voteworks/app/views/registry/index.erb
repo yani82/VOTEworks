@@ -1,11 +1,12 @@
-<form action="/registries" method="POST">
 <% @registries.each do |registry| %>
-    <%= registry.first_name %>
-    <%= registry.last_name %>
-    <%= registry.address %>
-    <%= registry.address_line_2 %>
-    <%= registry.city %>
-    <%= registry.state %>
-    <%= registry.zipcode %>
-    <%= registry.country %>
+    <%= registry.first_name %><br>
+    <%= registry.last_name %><br>
+    <%= registry.address %><br>
+    <%= registry.address_line_2 %><br>
+    <%= registry.city %><br>
+    <%= registry.state %><br>
+    <%= registry.zipcode %><br>
+    <%= registry.country %><br>
+    <a href="/registries/<%=registry.id%>/edit"><button>Edit information</button></a><br><br>
+
     <% end %> 
