@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         else
             user = User.create(username: params[:username], password: params[:password], email: params[:email])
             session[:user_id] = user.id
-            redirect "/registries"
+            erb :"/users/index"
         end
     end
 

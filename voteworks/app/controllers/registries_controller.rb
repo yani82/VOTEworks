@@ -63,9 +63,9 @@ class RegistryController < ApplicationController
 
     patch '/registries/:id' do
         params.delete("_method")
+        params.delete_if {|key, value| value.empty?} 
         @registry = Registry.find(params[:id])
-        @registry.update(params)
-        binding.pry
+        @registry.update(params) 
         redirect "/registries"
     end
     
