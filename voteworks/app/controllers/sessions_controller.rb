@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
-        redirect '/users'
+        redirect '/registries'
         else 
             redirect '/login'
         end 
@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
     get '/logout' do 
         logout! 
-        redirect '/login' # previously, /registry
+        redirect '/login' # or /welcome
     end 
 
 end 

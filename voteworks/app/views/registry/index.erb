@@ -1,3 +1,12 @@
+<header><img src="/images/Thankyouforregistering.jpg" style="width:400px;height400px;"></header>
+<h1>Welcome <%= current_user.username %>!</h1>
+
+<% if @registries.empty? %> 
+<p>You do not have any existing registries</p>
+
+<a href="/registries/new"><button>Create Registry</button></a>
+<% end %> 
+
 <% @registries.each do |registry| %>
     <%= registry.first_name %><br>
     <%= registry.last_name %><br>
@@ -6,7 +15,12 @@
     <%= registry.city %><br>
     <%= registry.state %><br>
     <%= registry.zipcode %><br>
-    <%= registry.country %><br>
-    <a href="/registries/<%=registry.id%>/edit"><button>Edit information</button></a><br><br>
+    <%= registry.country %><br><br>
+    <a href="/registries/<%=registry.id%>/edit"><button>Edit Information</button></a><br><br>
 
-    <% end %> 
+    <form action="/registries/<%=registry.id%>/delete" method="POST">
+    <input id="hidden" type="hidden" name="_method" value="DELETE"><button>Delete Registry</button><br>
+    </form><br> 
+    
+    <% end %><br>  
+    <a href="/registries/new"><button>Add Registry</button></a><br><br>

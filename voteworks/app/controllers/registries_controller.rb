@@ -4,8 +4,6 @@ class RegistryController < ApplicationController
     # user logged in to check their own registeries as well as different public registries with limited info ie how many 'returns how many registeries there are'
 
     get '/registries' do 
-        # "You are logged in as #{session[:email]}"
-        # binding.pry
         @registries = current_user.registries 
         erb :"registry/index"  
     end 
@@ -42,7 +40,7 @@ class RegistryController < ApplicationController
     # end
         registry = current_user.registries.create(params) # create saves it, new doesn't, helpder method: current_user is the instance of that user class and is calling on all the registries
         # binding.pry
-        redirect "registries/#{registry.id}"
+        redirect '/registries'
         # else 
             # redirect 'registries/new'
         end
@@ -70,9 +68,12 @@ class RegistryController < ApplicationController
     end
     
       delete '/registries/:id/delete' do
-        # @registry = Registry.find(params[:id]).first_name # or username? 
-        Registry.find(params[:id]).destroy
-        # erb :"delete" # add delete.erb in views/registry?
+        @registry = Registry.find(params[:id])
+        if @registry
+        @registry.delete
         redirect '/registries'
+        else 
+            redirect '/registries'
+        end
       end 
 end

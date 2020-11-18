@@ -17,7 +17,10 @@
     <div class="wrapper">
 
         <%= yield %>
-
+      <% if logged_in? %> 
+      <a href="/logout"><button>Logout</button></a>  
+      <% end %>
+      
       <footer class="branding">
         <small>&copy; 2020 <strong>Voteworks</strong></small>
       </footer>
