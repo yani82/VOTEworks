@@ -1,12 +1,12 @@
 # VOTEworks
 
-This is a sinatra web application created to help you register to vote, by adding your:
+This is a Sinatra web application created to encourage you to register to vote, by adding your:
 
-* Your Name
+* User Name
 * Email 
 * Password
 
-It will show you your details again as confirmation.
+It will then direct you to create a registry with you first and last name, and address. Then it will display your submitted information to confirm your registration as a voter. In which, you are able to edit or delete your registry or registries accordingly before each election. 
 
 ## Usage
 
