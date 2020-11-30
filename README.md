@@ -1,2 +1,0 @@
-# VOTEworks
-Sinatra Portfolio Project

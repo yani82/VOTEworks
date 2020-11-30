@@ -24,15 +24,15 @@ class ApplicationController < Sinatra::Base
       @current_user = User.find(session[:user_id])
     end 
 
-    def login(email, password)
-      # Authentication
-      user = User.find_by(:email => email) # missing params[:]?
-        if user && user.authenticate(password)
-        session[:email] = user.email
-      else 
-        redirect '/login'
-      end 
-    end 
+    # def login(email, password)
+    #   # Authentication
+    #   user = User.find_by(:email => email) # missing params[:]?
+    #     if user && user.authenticate(password)
+    #     session[:email] = user.email
+    #   else 
+    #     redirect '/login'
+    #   end 
+    # end 
 
     def logout!
       session.clear 
