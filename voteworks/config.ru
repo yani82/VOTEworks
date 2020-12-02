@@ -4,7 +4,7 @@ if ActiveRecord::Migrator.needs_migration?
   raise 'Migrations are pending. Run `rake db:migrate` to resolve the issue.'
 end
 
-use Rack::MethodOverride # to be able to use 'patch' 
+use Rack::MethodOverride # to be able to use 'patch', delete and put
 use SessionsController # need to 'mount' to run
 use RegistryController
 use UsersController

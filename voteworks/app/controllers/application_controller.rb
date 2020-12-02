@@ -13,26 +13,16 @@ class ApplicationController < Sinatra::Base
     erb :welcome
   end
 
-  helpers do # can be used across controllers
+  helpers do # can be used across controllers 
 
     def logged_in? 
       !!session[:user_id] # double negation
-      # instead of !!current_user
+      # checks if a session exists with this user id and returns true or false 
     end 
 
     def current_user
-      @current_user = User.find(session[:user_id])
+      @current_user = User.find(session[:user_id]) # who the user is?
     end 
-
-    # def login(email, password)
-    #   # Authentication
-    #   user = User.find_by(:email => email) # missing params[:]?
-    #     if user && user.authenticate(password)
-    #     session[:email] = user.email
-    #   else 
-    #     redirect '/login'
-    #   end 
-    # end 
 
     def logout!
       session.clear 
