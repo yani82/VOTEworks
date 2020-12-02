@@ -20,7 +20,11 @@ class RegistryController < ApplicationController
     get '/registries/:id' do 
         # "Get the id from the params hash and look in the database for a registry with that id and then save it to a @ variable and render an erb"
         @registry = Registry.find(params[:id]) 
-        erb :'/registry/show' 
+        if @registry.user && session[:user_id] == @registry.user.id 
+            erb :'/registry/show'
+        else 
+            redirect '/users'
+        end
     end 
 
     post '/registries' do 
@@ -35,9 +39,9 @@ class RegistryController < ApplicationController
     get '/registries/:id/edit' do
         # Checking if user is logged in
         @registry = Registry.find(params[:id]) 
-        if !logged_in?
+        if !logged_in? 
             redirect '/login'
-        elsif @registry 
+        elsif @registry.user && session[:user_id] == @registry.user.id 
             # "An edit registration form #{current_user.id} is editing #{registry.id}" # rendering = when current request has data we need
             erb :"/registry/edit"
         else 
