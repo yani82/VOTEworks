@@ -1,13 +1,13 @@
 class UsersController < ApplicationController 
 
     get '/signup' do
-        erb :"users/new.html"
+        erb :'users/new.html'
     end 
 
     post '/signup' do
         if params[:username] == "" || params[:password] == "" || params[:email] == "" #=> Every field has to be filled out. Have to check for duplicates later
-            # @error = "Must include email and password" 
-            redirect "/signup"
+            @error = "All fields must be filled in"
+            erb :'/users/new.html'
         elsif !!User.find_by(username: params[:username]) || !!User.find_by(email: params[:email]) 
             redirect "/signup"
         else

@@ -40,7 +40,7 @@ class RegistryController < ApplicationController
         # Checking if user is logged in
         @registry = Registry.find(params[:id]) 
         if !logged_in? 
-            redirect '/login'
+            redirect '/login' 
         elsif @registry.user && session[:user_id] == @registry.user.id 
             # "An edit registration form #{current_user.id} is editing #{registry.id}" # rendering = when current request has data we need
             erb :"/registry/edit"
@@ -59,7 +59,7 @@ class RegistryController < ApplicationController
     
       delete '/registries/:id/delete' do
         @registry = Registry.find(params[:id])
-        if @registry
+        if @registry && session[:user_id] == @registry.user.id 
         @registry.delete
         redirect '/registries'
         else 
